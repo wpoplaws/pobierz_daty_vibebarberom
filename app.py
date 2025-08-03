@@ -4,9 +4,8 @@ from datetime import date
 
 app = Flask(__name__)
 
-# Przykładowa funkcja zwracająca najbliższy dostępny termin (do podmiany na dane z API Altegio)
+# Przykładowa funkcja zwracająca najbliższy dostępny termin
 def get_next_available_date(staff_id):
-    # Tu możesz potem dodać rzeczywiste zapytanie do API Altegio
     return {
         "staff_id": staff_id,
         "next_available_date": date.today().isoformat()
@@ -31,5 +30,7 @@ def next_available():
 
     return jsonify(data)
 
+# ⬇️ KLUCZOWE!
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    port = int(os.environ.get("PORT", 10000))  # Render ustawia PORT jako zmienną środowiskową
+    app.run(host="0.0.0.0", port=port)
